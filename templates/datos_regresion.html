@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<br> <br> 
+<h5 style="background:dodgerblue; color: white;"><b>DATOS DE REGRESIÓN LOGÍSTICA</b></h5>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="div1">
+        <br> <br>
+            <table class="table-bordered bg-white table-sm col-xs-12 col-sm-12 col-md-12 col-lg-12" id="scroll_table">
+                <thead>
+                    <tr>
+                        <td style="width:193px"><b>Fecha</b></td>
+                        <td style="width:190px"><b>Magnitud Máxima</b></td>
+                        <td style="width:190px"><b>Magnitud Mínima</b></td>
+                        <td style="width:193px"><b>Epicentro</b></td>
+                        <td style="width:190px"><b>Mes</b></td>
+                        <td style="width:190px"><b>Etiqueta</b></td>
+                    </tr>
+                    <tr>
+                        <td> <img onmouseover="this.width=500;this.height=400;" onmouseout="this.width=180;this.height=75;" src="{{ url_for('static', filename='Imag/fechareg.JPG') }}" width="180" height="75" class="d-inline-block align-top" alt=""></td>
+                        <td> <img onmouseover="this.width=500;this.height=400;" onmouseout="this.width=175;this.height=75;" src="{{ url_for('static', filename='Imag/maxima.JPG') }}" width="175" height="75" class="d-inline-block align-top" alt=""></td>
+                        <td> <img onmouseover="this.width=500;this.height=400;" onmouseout="this.width=175;this.height=75;" src="{{ url_for('static', filename='Imag/minima.JPG') }}" width="175" height="75" class="d-inline-block align-top" alt=""></td>
+                        <td> <img onmouseover="this.width=500;this.height=400;" onmouseout="this.width=175;this.height=75;" src="{{ url_for('static', filename='Imag/epicentror.JPG') }}" width="175" height="75" class="d-inline-block align-top" alt=""></td>
+                        <td> <img onmouseover="this.width=500;this.height=400;" onmouseout="this.width=175;this.height=75;" src="{{ url_for('static', filename='Imag/mes.JPG') }}" width="175" height="75" class="d-inline-block align-top" alt=""></td>
+                        <td> <img onmouseover="this.width=500;this.height=400;" onmouseout="this.width=175;this.height=75;" src="{{ url_for('static', filename='Imag/etiqueta.JPG') }}" width="175" height="75" class="d-inline-block align-top" alt=""></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for sismo in sismos%}
+                        <tr>
+                            <td style="width:211px">{{ sismo.1 }}</td>
+                            <td style="width:210px">{{ sismo.2 }}</td>
+                            <td style="width:210px">{{ sismo.3 }}</td>
+                            <td style="width:205px">{{ sismo.4 }}</td>
+                            <td style="width:209px">{{ sismo.5 }}</td>
+                            <td style="width:192px">{{ sismo.6 }}</td>
+                        </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+            
+    </div>
+</div>
+
+{% endblock %}

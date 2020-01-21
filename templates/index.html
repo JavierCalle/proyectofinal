@@ -1,0 +1,58 @@
+{% extends 'layout.html' %}
+{% block body %}
+<div class="contenedor" >
+    <img class="col-xs-12 col-sm-12 col-md-12 col-lg-12" src="{{ url_for('static', filename='Imag/ecua.jpg') }}" width="700" height="300"/>
+    <div class="texto-encima " style="text-align: left;color: white;">
+         <h5 class="col-xs-12 col-sm-12 col-md-12 col-lg-12">Datos históricos de sismos en el Ecuador, 1985-2019</h5>
+        <p class="col-xs-12 col-sm-12 col-md-12 col-lg-12">Fecha, Hora, Profundidad y Ubicación de todos los simos con Magnitud mayor a 4</p>
+        <br><br><br>
+         <a class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="color:mintcream;" href="https://earthquake.usgs.gov/earthquakes/map/#%7B%22feed%22%3A%221574788176102%22%2C%22sort%22%3A%22newest%22%2C%22basemap%22%3A%22terrain%22%2C%22restrictListToMap%22%3A%5B%22restrictListToMap%22%5D%2C%22timezone%22%3A%22utc%22%2C%22mapposition%22%3A%5B%5B-85%2C0%5D%2C%5B85%2C360%5D%5D%2C%22overlays%22%3A%5B%22plates%22%5D%2C%22viewModes%22%3A%5B%22list%22%2C%22map%22%5D%2C%22listFormat%22%3A%22default%22%2C%22autoUpdate%22%3Afalse%2C%22search%22%3A%7B%22id%22%3A%221574788176102%22%2C%22name%22%3A%22Search%20Results%22%2C%22isSearch%22%3Atrue%2C%22params%22%3A%7B%22starttime%22%3A%221987-01-01T15%3A18%3A03.350Z%22%2C%22endtime%22%3A%222019-10-02T15%3A18%3A03.350Z%22%2C%22latitude%22%3A-1.8675%2C%22longitude%22%3A-77.8884%2C%22maxradiuskm%22%3A250%2C%22minmagnitude%22%3A4.5%2C%22orderby%22%3A%22time%22%7D%7D%7D"><h4>&nbsp;&nbsp;Datos Disponibles en USGS</h4> </a> 
+    </div>
+</div> <br> <br><br>
+<h5 style="background:dodgerblue; color: white;"><b>DATOS HISTÓRICOS DE SISMOS OCURRIDOS EN EL ECUADOR</b></h5>
+<br>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="div1">
+            <table class="table-bordered bg-white table-sm col-xs-12 col-sm-12 col-md-12 col-lg-12" id="scroll_table">
+                <thead>
+                    <tr>
+                        <td style="width:155px" ><b>Magnitud</b></td>
+                        <td style="width:161px"><b>Fecha</b></td>
+                        <td style="width:155px"><b>Hora</b></td>
+                        <td style="width:159px"><b>Latitud</b></td>
+                        <td style="width:159px"><b>Longitud</b></td>
+                        <td style="width:159px"><b>Profundidad</b></td>
+                        <td style="width:159px"><b>Epicentro</b></td>
+                    </tr>
+                    <tr>
+                            <td> <img onmouseover="this.width=500;this.height=400;" onmouseout="this.width=144;this.height=75;" src="{{ url_for('static', filename='Imag/magnitud.JPG') }}" width="144" height="75" class="d-inline-block align-top" alt=""></td>
+                            <td> <img onmouseover="this.width=500;this.height=400;" onmouseout="this.width=149;this.height=75;" src="{{ url_for('static', filename='Imag/fecha.JPG') }}" width="149" height="75" class="d-inline-block align-top" alt=""></td>
+                            <td> <img onmouseover="this.width=500;this.height=400;" onmouseout="this.width=145;this.height=75;" src="{{ url_for('static', filename='Imag/Hora.JPG') }}" width="145" height="75" class="d-inline-block align-top" alt=""></td>
+                            <td> <img onmouseover="this.width=500;this.height=400;" onmouseout="this.width=148;this.height=75;" src="{{ url_for('static', filename='Imag/latitud.JPG') }}" width="148" height="75" class="d-inline-block align-top" alt=""></td>
+                            <td> <img onmouseover="this.width=500;this.height=400;" onmouseout="this.width=148;this.height=75;" src="{{ url_for('static', filename='Imag/longitud.JPG') }}" width="148" height="75" class="d-inline-block align-top" alt=""></td>
+                            <td> <img onmouseover="this.width=500;this.height=400;" onmouseout="this.width=147;this.height=75;" src="{{ url_for('static', filename='Imag/profundidad.JPG') }}" width="147" height="75" class="d-inline-block align-top" alt=""></td>
+                            <td> <img onmouseover="this.width=500;this.height=400;" onmouseout="this.width=149;this.height=75;" src="{{ url_for('static', filename='Imag/epicentro.JPG') }}" width="149" height="75" class="d-inline-block align-top" alt=""></td>
+                            
+                    </tr>
+                </thead>
+                <tbody >    
+                        {% for sismo in sismos%}
+                            <tr >
+                                <td style="width:167px">{{ sismo.1 }}</td>
+                                <td style="width:171px">{{ sismo.2 }}</td>
+                                <td style="width:164px">{{ sismo.3 }}</td>
+                                <td style="width:168px">-{{ sismo.4 }}</td>
+                                <td style="width:167px">-{{ sismo.5 }}</td>
+                                <td style="width:169px">{{ sismo.6 }}</td>
+                                <td style="width:150px">{{ sismo.7 }}</td>
+                            </tr>
+                        {%endfor%}
+            
+                    </tbody>
+                </table>
+            
+    </div>
+</div>
+
+
+{% endblock %}

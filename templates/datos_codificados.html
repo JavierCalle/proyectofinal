@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<br> <br> 
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="contenedor" >
+        <div class="col-md-12 mt-md-0 mt-3">
+            <h5 style="background:dodgerblue; color: white;"><b>CODIFICACIÓN DE LOS DATOS</b></h5>
+        </div>
+        <br>
+            <table id="scroll_table" class="table table-striped table-bordered bg-white table-sm col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <thead>
+                    <tr>
+                        <td style="width:280px"><b>Descripción</b></td>
+                        <td style="width:220px"><b>Codificación</b></td>
+                    </tr>
+                    <tr>
+                        <td> <img onmouseover="this.width=500;this.height=400;" onmouseout="this.width=130;this.height=75;" src="{{ url_for('static', filename='Imag/descripcion.JPG') }}" width="130" height="75" class="d-inline-block align-top" alt=""></td>
+                        <td> <img onmouseover="this.width=500;this.height=400;" onmouseout="this.width=130;this.height=75;" src="{{ url_for('static', filename='Imag/descripcion.JPG') }}" width="130" height="75" class="d-inline-block align-top" alt=""></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for sismo in sismos%}
+                        <tr>
+                            <td style="width:280px">{{ sismo.1 }}</td>
+                            <td style="width:220px">{{ sismo.2 }}</td>
+                        </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+
+        </div>  
+    </div>
+</div>
+
+{% endblock %}

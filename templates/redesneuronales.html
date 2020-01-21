@@ -1,0 +1,145 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<br> <br> 
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="mt-md-0 mt-3">
+
+            <h3 style="background:dodgerblue; color: white;"><b>REDES NEURONALES</b></h3>
+            <br>
+            <div class="contenedor" >
+                <div class="card border-dark mb-3" style="max-width: 45rem;">
+                        <div class="card-header"></div>
+                        <div class="card-body text-dark" style="height:180px; overflow-y: scroll;">
+                          <h5 class="card-title">Resumen</h5>
+                          <p class="card-text" style="text-align:justify;">
+                                Los datos para aplicar el algoritmo de redes neuronales fueron recopilados a partir 
+                                de 1985 hasta el 2019. La mayoria de estos datos se obtuvieron de la página
+                                <a style="color:blue;" href="https://earthquake.usgs.gov/earthquakes/map/#%7B%22feed%22%3A%221574788176102%22%2C%22sort%22%3A%22newest%22%2C%22basemap%22%3A%22terrain%22%2C%22restrictListToMap%22%3A%5B%22restrictListToMap%22%5D%2C%22timezone%22%3A%22utc%22%2C%22mapposition%22%3A%5B%5B-85%2C0%5D%2C%5B85%2C360%5D%5D%2C%22overlays%22%3A%5B%22plates%22%5D%2C%22viewModes%22%3A%5B%22list%22%2C%22map%22%5D%2C%22listFormat%22%3A%22default%22%2C%22autoUpdate%22%3Afalse%2C%22search%22%3A%7B%22id%22%3A%221574788176102%22%2C%22name%22%3A%22Search%20Results%22%2C%22isSearch%22%3Atrue%2C%22params%22%3A%7B%22starttime%22%3A%221987-01-01T15%3A18%3A03.350Z%22%2C%22endtime%22%3A%222019-10-02T15%3A18%3A03.350Z%22%2C%22latitude%22%3A-1.8675%2C%22longitude%22%3A-77.8884%2C%22maxradiuskm%22%3A250%2C%22minmagnitude%22%3A4.5%2C%22orderby%22%3A%22time%22%7D%7D%7D">USGS</a>.
+                                Una vez recolectados los datos se procedió a realizar el respectivo análisis y procesamiento.
+                                Al entrenar el algoritmo de redes neuronales se obtuvo una perdida del 18.5% aproximadamente. Una vez entrenado 
+                                el modelo se procedió a realizar la respectiva predicción la cual se detalla en la parte inferior
+                                de esta página. Si desea ver los datos usados para la prediccion haga clic <a style="color:blue;" href="/verdatosredes">aqui</a>.
+                            </p>
+                        </div>
+                      </div>
+            </div> <br> <br>
+            <div class="contenedor" >
+                <div class="card border-dark mb-3" style="max-width: 50rem;">
+                    <div class="card-header" style="background:lightblue; color: darkblue; font-size: 18px;">
+                        <strong>Descripción de Parámetros</strong></div>
+                    <div class="card-body text-dark " >
+                        <img class="col-xs-12 col-sm-12 col-md-12 col-lg-12" src="{{ url_for('static', filename='Imag/descripcionparametrosrn.png') }}" width="650" height="350"/>
+                        <h5 class="card-title"></h5>
+                        <p class="card-text" style="text-align:justify;">
+                            Como se puede observar en la gráfica existen 2 características tomadas para el pronóstico de
+                            probabilidad de ocurrencia de un sismo usando <b>Redes Neuronales LSTM</b>. La primera 
+                            característica es la <b>Descripción</b> la cual es una combinación del mes con la magnitud y 
+                            además se encuentra codificada para poder realizar el respectivo gráfico, si desea ver los datos 
+                            codificados de esta columna con su respectiva descodificación haga clic
+                             <a style="color:blue;" href="/verdatoscodificados">aquí</a>. Los sismos catalogados
+                            como "ligeros" son los que más ocurren especialmente en el mes de Octubre. Cabe mencionar que los
+                            sismos ligeros son aquellos cuya magnitud es superior a 4 e inferior a 5. La segunda característica es 
+                            el <b>Mes</b> que al igual que en el modelo de regresión se observa que los meses en donde mas ocurren 
+                            los sismos son durante los primeros e últimos meses de cada año.
+
+                        </p>
+                    </div>
+                </div>
+            </div> 
+            <br><br>
+            <div class="contenedor" >
+                <div class="card border-dark mb-3" style="max-width: 55rem;">
+                    <div class="card-header" style="background:lightblue; color: darkblue; font-size: 18px;">
+                        <strong>Pérdida de Validación</strong></div>
+                    <div class="card-body text-dark" >
+                        <img class="col-xs-12 col-sm-12 col-md-12 col-lg-12"  src="{{ url_for('static', filename='Imag/lossrn.png') }}" width="750" height="350"/>
+                        <h5 class="card-title"></h5>
+                        <p class="card-text" style="text-align:justify;">
+                            En el gráfico se observan dos líneas una de color <b style="color:orange;">Naranja</b>
+                            que representa el valor de Loss y una de color <b style="color:blue;">Azul</b> que
+                            representa el valor de val_loss. Es importante distinguir entre los términos val_loss y loss. 
+                            <b>Loss</b> significa pérdida y es aplicado sobre los datos de entrenamiento. 
+                            <b>Val_loss</b> significa pérdida de valor y es aplicado sobre los datos de prueba.
+                             Mientras la línea que representa a loss sea superior a la de val_loss significa 
+                             que el modelo es capaz de generalizar y no va a sufrir de <b>overfitting</b>  entendiéndose 
+                             a este término como sobreajuste es decir que un modelo que tenga overfitting no va a ser 
+                             capaz de generalizar resultados.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <br><br>
+            <div class="contenedor" >
+                <div class="card border-dark mb-3" style="max-width: 55rem;">
+                    <div class="card-header" style="background:lightblue; color: darkblue; font-size: 18px;">
+                        <strong>Validación del Modelo</strong></div>
+                    <div class="card-body text-dark" >
+                        <img class="col-xs-12 col-sm-12 col-md-12 col-lg-12"  src="{{ url_for('static', filename='Imag/validacionred.png') }}" width="750" height="350"/>
+                        <h5 class="card-title"></h5>
+                        <p class="card-text" style="text-align:justify;">
+                            El gráfico nos muestra como están distribuidos los datos reales y como están los datos
+                            que se predijeron. Los puntos de color <b style="color:green;">Verde</b> son la distribución 
+                            de los datos reales, mientras que los puntos de color <b style="color:red;">Rojo</b> son la
+                            distribución de los datos predichos. Como se puede observar la mayoría de los puntos son 
+                            coincidentes o están muy cerca de serlos.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <br><br>  
+            <div class="contenedor" >
+                <div class="card border-dark mb-3" style="max-width: 55rem;">
+                    <div class="card-header" style="background:lightblue; color: darkblue; font-size: 18px;">
+                        <strong>Comparación del Modelo</strong></div>
+                    <div class="card-body text-dark" >
+                        <img class="col-xs-12 col-sm-12 col-md-12 col-lg-12" src="{{ url_for('static', filename='Imag/comparacionred.png') }}" width="700" height="350"/>
+                        <h5 class="card-title"></h5>
+                        <p class="card-text" style="text-align:justify;">
+                            La gráfica que se observa muestra cómo se comportan los datos reales versus cómo se comportan
+                            los datos predichos. La línea de color <b style="color:blue;">Azul</b> indica la distribución de los 
+                            datos reales, mientras que la línea de color <b style="color:orange;">Naranja</b> muestra la distribución 
+                            de los datos predichos. Se puede observar que hay ciertos picos a los que no llega las predicciones y esto 
+                            se debe a que hay muestras casi nulas de esos datos por lo que es difícil para la red neuronal
+                            LSTM realizar correctamente predicciones en esos picos. Para ello existen los conocidos límites 
+                            de control los cuales ayudan a identificar si un proceso está fuera de control. En el siguiente 
+                            gráfico se puede observar que efectivamente al realizar el análisis de los datos históricos de
+                            sismos ocurridos a partir de 1985 existen ciertos datos que se encuentra por encima del
+                             <b style="color:gray;">Límite Superior (LS)</b>. Sin embargo para que la predicción sea lo más 
+                             precisa posible estos datos no fueron eliminados. </p>
+                            <img class="col-xs-12 col-sm-12 col-md-12 col-lg-12" src="{{ url_for('static', filename='Imag/limitescontrolrn.png') }}" width="700" height="350"/>
+                       
+                    </div>
+                </div>
+            </div>
+            <br><br>  
+            <div class="contenedor" >
+                <div class="card border-dark mb-3" style="max-width: 55rem;">
+                    <div class="card-header" style="background:lightblue; color: darkblue; font-size: 18px;">
+                        <strong>Nuevos Sismos Predichos</strong></div>
+                    <div class="card-body text-dark" >
+                        <img class="col-xs-12 col-sm-12 col-md-12 col-lg-12" src="{{ url_for('static', filename='Imag/sismospredecidosrn.png') }}" width="700" height="350"/>
+                        <h5 class="card-title"></h5>
+                        <p class="card-text" style="text-align:justify;">
+                            El gráfico nos indica las predicciones realizadas una vez entrenado el modelo de redes neuronales.
+                             Al estar codificado es difícil interpretar sin embargo el gráfico de la parte inferior se puede
+                             interpretar con mayor facilidad, el mismo señala que <b>4</b> sismos con magnitud 
+                             inferior a <b>5</b> ocurrirán en <b>Noviembre</b>, <b>2</b> en <b>Marzo</b> y <b>1</b>
+                              en <b>Mayo</b>. Finalmente otro sismo ocurrirá en <b>Agosto</b> pero esta vez 
+                              su magnitud será superior a <b>6</b> y menor a <b>7</b>.
+                              
+                        </p>
+                            <img class="col-xs-12 col-sm-12 col-md-12 col-lg-12" src="{{ url_for('static', filename='Imag/sismos2020rn.png') }}" width="550" height="250"/>
+                       
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+    </div>
+</div>
+
+{% endblock %}
